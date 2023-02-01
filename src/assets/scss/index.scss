@@ -1,0 +1,1475 @@
+@import "_variables.scss";
+@import "_themeColors.scss";
+@import "_font.scss";
+@import "_mixin.scss";
+@import "_space.scss";
+
+/*==========Common CSS ==========*/
+
+:root {
+    --header_height: auto;
+    --sideBar_width: 300px;
+    --sm_sideBar_width: 80px;
+    --xs_sideBar_width: 250px;
+    --body_space_x: 30px;
+    --body_space_y: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    font-family: $body_font;
+    color: $text_color;
+    background-color: $body_bg;
+    text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: $text_color;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    position: relative;
+}
+
+.sec_wp {
+    position: relative;
+    z-index: 4;
+}
+
+.wow {
+    visibility: hidden;
+}
+
+.for_des {
+    display: block !important;
+
+    @media (max-width: 1199px) {
+        display: none !important;
+    }
+}
+
+.for_mob {
+    display: none !important;
+
+    @media (max-width: 1199px) {
+        display: block !important;
+    }
+}
+
+.for_des_flex {
+    display: flex !important;
+
+    @media (max-width: 1199px) {
+        display: none !important;
+    }
+}
+
+.for_mob_flex {
+    display: none !important;
+
+    @media (max-width: 1199px) {
+        display: flex !important;
+    }
+}
+
+.back_img {
+    @include back_img;
+}
+
+.dark_section {
+    background-color: $dark_section_bg;
+    color: $white_color;
+
+    &:after {
+        @include after_before();
+        background: linear-gradient(to right, $white_color 0%, $black_color 80%);
+        opacity: 0.02;
+    }
+}
+
+.light_bg_sec {
+    background-color: rgba($primary_color, 0.1);
+}
+
+.divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: $border_color;
+}
+
+.table-responsive {
+    border-radius: 15px;
+    border: 1px solid $border_color;
+}
+
+.table {
+    margin: 0;
+    --bs-table-bg: rgba(225, 225, 225, 0.02);
+    > :not(caption) > * > * {
+        padding: 1rem 1.5rem;
+
+        @media (max-width: 991px) {
+            padding: 0.8rem 0.8rem;
+            white-space: nowrap;
+        }
+    }
+
+    > :not(:first-child) {
+        border-color: $border_color;
+    }
+}
+
+.table_loader_wp {
+    position: relative;
+
+    .table_loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($dark_section_bg, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        z-index: 3;
+        border: 1px solid $border_color;
+
+        svg {
+            animation: spin 1.8s linear 0s infinite;
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+/*==========Common CSS End==========*/
+
+/*==========Form CSS==========*/
+
+.form_element {
+    --padding: 50px;
+    position: relative;
+
+    input {
+        padding-right: var(--padding);
+    }
+
+    i {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        pointer-events: none;
+        color: $primary_color;
+    }
+}
+
+.form_box_wp {
+    position: relative;
+    padding: 30px;
+    border: 1px solid $border_color;
+    border-radius: 10px;
+    background-color: rgba($white_color, 0.03);
+
+    @media (max-width: 991px) {
+        padding: 25px 15px;
+    }
+
+    .form_input_wp {
+        margin-bottom: 20px;
+    }
+
+    &.casino_chart {
+        padding-bottom: 0;
+    }
+}
+
+.form_btn {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.form_remove_btn {
+    --size: 40px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border: 1px solid $red_color;
+    background-color: $red_color;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: $white_color;
+        color: $red_color;
+    }
+}
+
+.form_box {
+    .divider {
+        &:last-of-type {
+            display: none;
+        }
+    }
+}
+
+.form_title {
+    margin-bottom: 20px;
+}
+
+.form_input_label {
+    margin-bottom: 10px;
+
+    .form_input_icon {
+        display: inline-block;
+        margin-right: 6px;
+        color: $primary_color;
+    }
+}
+
+.form_input_wp {
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.checkbox_wp {
+    margin-bottom: 15px;
+    label {
+        vertical-align: super;
+        cursor: pointer;
+    }
+}
+
+.form_input::-webkit-input-placeholder {
+    color: $input_color;
+}
+
+.form_input::-moz-placeholder {
+    color: $input_color;
+}
+
+.form_input:-ms-input-placeholder {
+    color: $input_color;
+}
+
+.form_input::-ms-input-placeholder {
+    color: $input_color;
+}
+
+.form_input::placeholder {
+    color: $input_color;
+}
+
+select {
+    color: $input_color !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    &::-ms-expand {
+        display: none;
+    }
+    option {
+        color: $black_color !important;
+    }
+}
+
+.form_input,
+select {
+    width: 100%;
+    height: 55px;
+    border: 2px solid rgba($silver_color, 0.2);
+    outline: none !important;
+    padding: 0 15px;
+    color: $white_color;
+    background: transparent;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    font-weight: 500;
+
+    &.error_input {
+        border-color: rgba($red_color, 0.4);
+    }
+}
+
+textarea.form-input {
+    height: 192px;
+    resize: none;
+    padding: 18px 30px;
+    display: block;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    --size: 24px;
+    width: var(--size);
+    height: var(--size);
+    margin: 0;
+    outline: none !important;
+    overflow: hidden;
+    background: transparent;
+    border: 2px solid rgba($silver_color, 0.3);
+    box-shadow: none;
+    margin-right: 10px;
+    -webkit-appearance: none;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:checked::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy4wMzAzIDAuOTY5NjdDMTMuMzIzMiAxLjI2MjU2IDEzLjMyMzIgMS43Mzc0NCAxMy4wMzAzIDIuMDMwMzNMNi4wMzAzMyA5LjAzMDMzQzUuNzM3NDQgOS4zMjMyMiA1LjI2MjU2IDkuMzIzMjIgNC45Njk2NyA5LjAzMDMzTDAuOTY5NjcgNS4wMzAzM0MwLjY3Njc3NyA0LjczNzQ0IDAuNjc2Nzc3IDQuMjYyNTYgMC45Njk2NyAzLjk2OTY3QzEuMjYyNTYgMy42NzY3OCAxLjczNzQ0IDMuNjc2NzggMi4wMzAzMyAzLjk2OTY3TDUuNSA3LjQzOTM0TDExLjk2OTcgMC45Njk2N0MxMi4yNjI2IDAuNjc2Nzc3IDEyLjczNzQgMC42NzY3NzcgMTMuMDMwMyAwLjk2OTY3WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==");
+    font-size: 12px;
+    padding-top: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include flex_center(center, center);
+    filter: brightness(1) invert(1);
+}
+
+input[type="radio"]:checked::before {
+    @include after_before();
+    border-radius: 50%;
+    background: $primary_color;
+    border: 3px solid $white_color;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.form_contact {
+    p {
+        margin: 0;
+
+        a {
+            color: $primary_color;
+        }
+    }
+}
+
+.form_submit {
+    svg {
+        margin-left: 10px;
+        animation: spin 1.8s linear 0s infinite;
+    }
+}
+
+.form_submit_error {
+    color: $red_color;
+}
+.success-msg {
+    color: #1ebf34;
+}
+/*==========Form CSS End==========*/
+
+/*==========Typography CSS==========*/
+
+p {
+    @include font-size($p_font_sizes);
+    color: $silver_color;
+
+    a {
+        color: $white_color;
+        text-decoration: underline !important;
+
+        &:hover {
+            color: $primary_color;
+        }
+    }
+
+    &.big_text {
+        @include font-size($big_p_font_size);
+    }
+
+    &.small_text {
+        @include font-size($small_p_font_size);
+    }
+
+    &:empty {
+        display: none;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    outline: none !important;
+    color: $white_color;
+
+    &:hover {
+        color: $primary_color;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    font-family: $title_font;
+}
+
+.h1_title,
+.h2_title,
+.h3_title,
+.h4_title,
+.h5_title,
+.h6_title {
+    span {
+        display: block;
+    }
+}
+
+.h1_title {
+    @include font-size($h1_font_sizes);
+    font-weight: bold;
+}
+
+.h2_title {
+    @include font-size($h2_font_sizes);
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    position: relative;
+    color: $primary_color;
+}
+
+.h3_title {
+    @include font-size($h3_font_sizes);
+}
+
+.h4_title {
+    @include font-size($h4_font_sizes);
+}
+
+.h5_title {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*==========Typography CSS End==========*/
+
+/*==========Button CSS==========*/
+
+.sec_btn {
+    --x: 13px;
+    --y: 18px;
+    --gap: 8px;
+    padding: var(--x) var(--y);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary_color;
+    color: $white_color;
+    border: 1px solid $primary_color;
+    position: relative;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 1.42857143;
+    z-index: 2;
+    border-radius: 10px;
+    outline: none !important;
+    font-weight: 500;
+    transition: 0.4s;
+    column-gap: var(--gap);
+
+    &:hover {
+        background-color: $white_color;
+        color: $black_color;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        transform: translate(0, -50%);
+        background: $white_color;
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(25px);
+        opacity: 0.25;
+    }
+
+    &.outline_btn {
+        background-color: transparent;
+
+        &:hover {
+            background-color: $white_color;
+            border-color: $white_color;
+        }
+    }
+
+    &.secondary_btn {
+        background-color: rgba($white_color, 0.06);
+        border-color: transparent;
+
+        &:hover {
+            background-color: $primary_color;
+            color: $white_color;
+        }
+    }
+
+    &.transparent_btn {
+        background-color: transparent;
+        border-color: transparent;
+        padding: 0;
+
+        &:hover {
+            background-color: transparent;
+            border-color: transparent;
+            color: $white_color;
+            opacity: 0.6;
+        }
+
+        &:after {
+            display: none;
+        }
+    }
+
+    &.white-hover-btn {
+        &:before {
+            background: $white_color;
+        }
+
+        &:hover {
+            color: $black_color;
+        }
+    }
+
+    &.white-btn {
+        color: $black_color;
+
+        &:hover {
+            color: $white_color;
+        }
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+/*==========Button CSS End==========*/
+
+/*==========White text CSS==========*/
+
+.white_text,
+.dark_section {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul li,
+    label,
+    .read_more {
+        color: $white_color;
+    }
+}
+
+.white_list_link a {
+    color: $white_color;
+}
+
+.white_arrow_dots {
+    .slick-dots li button {
+        border-color: $white_color;
+    }
+    .slick-dots li.slick-active button,
+    .slick-dots li button:hover {
+        background: $white_color;
+    }
+
+    .slick-arrow {
+        background: $white_color;
+        color: $black_color;
+    }
+
+    .slick-arrow:hover {
+        background: $black_color;
+        color: $white_color;
+    }
+}
+
+.white_btn {
+    background: $white_color;
+    color: $black_color;
+    border-color: $white_color;
+}
+
+.white_form {
+    background: rgba($white_color, 0.95);
+    color: $dark_color;
+
+    .form_input,
+    select {
+        background: transparent;
+        color: $dark_color;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        background: transparent;
+
+        &:before {
+            filter: brightness(1) invert(0);
+        }
+    }
+
+    .form_input::-webkit-input-placeholder {
+        color: $white_input_color;
+    }
+
+    .form_input::-moz-placeholder {
+        color: $white_input_color;
+    }
+
+    .form_input:-ms-input-placeholder {
+        color: $white_input_color;
+    }
+
+    .form_input::-ms-input-placeholder {
+        color: $white_input_color;
+    }
+
+    .form_input::placeholder {
+        color: $white_input_color;
+    }
+
+    select {
+        color: $white_input_color !important;
+    }
+
+    .form-element {
+        i {
+            color: $white_color;
+        }
+    }
+}
+
+/*==========White text CSS End==========*/
+
+/*==========loader CSS==========*/
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $black_color;
+    z-index: 99;
+
+    i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $white_color;
+    }
+}
+
+/*==========loader CSS End==========*/
+
+/*==========LogIn Page CSS==========*/
+
+.login_form_sec {
+    @include full_height_sec;
+    padding: 30px 0;
+    overflow: hidden;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 2%;
+        right: 18%;
+        width: 550px;
+        height: 550px;
+        background: #2084e0;
+        display: block;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.4;
+        z-index: -1;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: -75px;
+        right: 0%;
+        width: 530px;
+        height: 530px;
+        background: #e0aa20;
+        display: block;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    .form_shape {
+        &:after {
+            content: "";
+            position: absolute;
+            top: 2%;
+            left: 18%;
+            width: 550px;
+            height: 550px;
+            background: #11e7cb;
+            display: block;
+            border-radius: 50%;
+            filter: blur(200px);
+            opacity: 0.18;
+            z-index: -1;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 550px;
+            height: 550px;
+            background: #ffffff;
+            display: block;
+            border-radius: 50%;
+            filter: blur(250px);
+            opacity: 0.05;
+            z-index: -1;
+        }
+    }
+}
+
+.login_form {
+    padding: 40px;
+    border-radius: 20px;
+
+    @media (max-width: 575px) {
+        padding: 30px;
+    }
+
+    @media (max-width: 400px) {
+        padding: 25px 15px;
+    }
+}
+
+/*==========LogIn Page CSS End==========*/
+
+/*==========Page Layout Page CSS==========*/
+
+.page_wrapper {
+    display: flex;
+    min-height: 100vh;
+    height: auto;
+}
+
+.main_content {
+    padding: var(--body_space_y) var(--body_space_x);
+    width: calc(100% - var(--sideBar_width));
+    margin-left: auto;
+    background: $main_content_bg;
+
+    @media (max-width: 1199px) {
+        width: 100%;
+    }
+
+    @media (max-width: 480px) {
+        --body_space_x: 15px;
+        --body_space_y: 15px;
+    }
+}
+/*==========Page Layout Page CSS End==========*/
+
+/*==========Side Bar Page CSS==========*/
+
+.sidebar {
+    width: var(--sideBar_width);
+    padding: var(--body_space_y) 0;
+    border-right: 1px solid $border_color;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+
+    .sidebar_top {
+        padding: 8px var(--body_space_x) 0;
+        .sidebar_collapse_button {
+            position: absolute;
+            right: -22px;
+            top: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid $border_color;
+            background: $body_bg;
+            padding-right: 1px;
+            transition: 0.3s;
+
+            &:hover {
+                background: $primary_color;
+            }
+
+            @media (max-width: 1199px) {
+                display: none;
+            }
+        }
+    }
+    .site_logo {
+        display: inline-flex;
+
+        img {
+            max-height: 60px;
+        }
+    }
+
+    .sidebar_menulist {
+        margin-top: 20px;
+
+        ul {
+            li {
+                display: block;
+                a {
+                    display: block;
+                    padding: 5px var(--body_space_x);
+                    position: relative;
+                    font-weight: 500;
+                    text-transform: capitalize;
+
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 5px;
+                        height: 50%;
+                        transform: translate(0, -50%);
+                        background-color: $primary_color;
+                        border-radius: 0 5px 5px 0;
+                        transition: 0.3s;
+                        opacity: 0;
+                    }
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 12px;
+                        padding: 10px 14px;
+                        border-radius: 8px;
+                        background-color: transparent;
+                        border: 1px solid $border_color;
+                        transition: 0.3s;
+                    }
+
+                    &:hover,
+                    &.isActive {
+                        color: $primary_color;
+
+                        &:after {
+                            height: 70%;
+                            opacity: 1;
+                        }
+
+                        span {
+                            background-color: rgba($white_color, 0.01);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1199px) {
+        transform: translate(calc(var(--sideBar_width) * -1));
+        --body_space_x: 20px;
+        width: var(--sideBar_width) !important;
+        background-color: $body_bg;
+        z-index: 99;
+        transition: 0.3s;
+    }
+
+    @media (max-width: 480px) {
+        width: var(--xs_sideBar_width) !important;
+    }
+}
+
+.sidebar_collapsed {
+    .sidebar {
+        --body_space_x: 14px;
+        width: var(--sm_sideBar_width);
+
+        ul {
+            li {
+                a {
+                    span {
+                        padding: 10px 8px;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .main_content {
+        width: calc(100% - var(--sm_sideBar_width));
+        @media (max-width: 1199px) {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 1199px) {
+        .sidebar {
+            transform: translate(0, 0);
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 100%;
+                width: 100vw;
+                height: 100%;
+                background: #000;
+                opacity: 0.7;
+            }
+
+            ul {
+                li {
+                    a {
+                        span {
+                            justify-content: start;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*==========Side Bar Page CSS End==========*/
+
+/*==========Header CSS==========*/
+
+.site_header {
+    // position: sticky;
+    // top: 15px;
+    left: 0;
+    z-index: 99;
+    height: var(--header_height);
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $border_color;
+
+    .header_menu {
+        @include align_center(center);
+        ul {
+            @include list_item() {
+                color: $black_color;
+                font-weight: 500;
+                transition: 0.3s;
+                position: relative;
+                @include flex_center(unset, center);
+                text-transform: capitalize;
+
+                &:before {
+                    content: "";
+                    width: 6px;
+                    height: 6px;
+                    background: $primary_color;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-right: 5px;
+                    transition: 0.3s;
+                }
+
+                &:hover {
+                    color: $primary_color;
+                    opacity: 1;
+
+                    &:before {
+                        background: $black_color;
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+    }
+
+    .main_header_content {
+        display: flex;
+        flex: 0 0 100%;
+        align-items: center;
+        column-gap: 15px;
+
+        h5 {
+            flex: 1;
+            width: 100%;
+        }
+
+        @media (max-width: 1199px) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    .header_right {
+        margin-left: auto;
+
+        ul {
+            &:not(.dropdown_list) {
+                display: flex;
+                align-items: center;
+                column-gap: 20px;
+
+                @media (max-width: 1199px) {
+                    flex-direction: column;
+                    row-gap: 15px;
+                }
+            }
+
+            li {
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            margin: 0 auto;
+            padding-bottom: 40px;
+            display: none;
+            padding-top: 15px;
+            border-top: 1px solid $border_color;
+            width: 100%;
+
+            &.player_open {
+                display: block;
+            }
+        }
+    }
+
+    .dropdown_wp {
+        position: relative;
+
+        .dropdown_btn {
+            --x: 10px;
+            --y: 20px;
+            --gap: 10px;
+
+            .dropdown_icon {
+                --size: 26px;
+                background-color: rgba($white_color, 0.08);
+                padding: 2px;
+                border-radius: 50%;
+                width: var(--size);
+                height: var(--size);
+                transition: 0.3s;
+            }
+
+            .dropdown_user_profile_title {
+                span {
+                    display: flex;
+                    text-align: left;
+                    align-items: center;
+
+                    svg {
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+            &:hover {
+                ~ .dropdown_list {
+                    margin-top: 5px;
+                    visibility: visible;
+                    opacity: 1;
+                    transition: 0.1s;
+                }
+
+                .dropdown_icon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &:after {
+                display: none;
+            }
+
+            @media (max-width: 480px) {
+                .dropdown_user_profile_title {
+                    width: clamp(120px, 37vw, 200px);
+                    overflow: hidden;
+
+                    strong {
+                        text-overflow: ellipsis;
+                        width: 100%;
+                        overflow: hidden;
+                        display: block;
+                        text-align: left;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        .dropdown_list {
+            position: absolute;
+            top: auto;
+            right: 0;
+            width: 100%;
+            background-color: rgba($white_color, 0.04);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: 0.1s;
+            margin-top: 10px;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 10;
+            min-width: 170px;
+
+            &:hover {
+                margin-top: 5px;
+                visibility: visible;
+                opacity: 1;
+                transition: 0s;
+            }
+
+            li {
+                --mb: 18px;
+                display: block;
+                margin-bottom: var(--mb);
+                cursor: pointer;
+                transition: 0.3s;
+
+                svg {
+                    margin-right: 5px;
+                }
+
+                .divider {
+                    margin-bottom: var(--mb);
+                }
+
+                &:hover {
+                    color: $primary_color;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .dropdown_user_profile_img {
+        margin-right: var(--x);
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 2px 2px 40px rgba($white_color, 0.25);
+            filter: brightness(1.2);
+            min-width: 42px;
+        }
+    }
+
+    @media (max-width: 1199px) {
+        display: block;
+
+        .top_header {
+            margin-bottom: 20px;
+            position: relative;
+
+            .menu_toggle {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translate(0, -50%);
+                background: transparent;
+                border: none;
+                outline: none;
+                z-index: 100;
+            }
+
+            .player_toggle {
+                right: 40px;
+                z-index: 2;
+            }
+
+            @media (max-width: 480px) {
+                .site_logo {
+                    img {
+                        width: 160px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        h5 {
+            border-top: 1px solid $border_color;
+            padding-top: 12px;
+        }
+    }
+}
+
+/*==========Header CSS End==========*/
+
+/*==========Casino Page CSS End==========*/
+.react-datepicker-popper {
+    z-index: 4;
+}
+.react-datepicker {
+    background-color: rgba($black_color, 0.8);
+    border-radius: 20px;
+    border: 2px solid rgba($white_color, 0.1);
+    backdrop-filter: blur(20px);
+
+    .react-datepicker__triangle {
+        transform: translate(25px, 0) !important;
+        opacity: 0.4;
+    }
+
+    .react-datepicker__header {
+        padding: 10px;
+        border-radius: 20px 20px 40px 40px;
+        background-color: rgba($black_color, 0.3);
+    }
+
+    .react-datepicker__current-month,
+    .react-datepicker-time__header,
+    .react-datepicker-year-header,
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name {
+        color: $white_color;
+    }
+
+    .react-datepicker__day,
+    .react-datepicker__month-text,
+    .react-datepicker__quarter-text,
+    .react-datepicker__year-text,
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name {
+        border-radius: 50%;
+        border: 2px solid transparent;
+        width: 35px;
+        height: 35px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: top;
+        color: $white_color;
+
+        &:empty {
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
+    }
+
+    .react-datepicker__year-read-view--down-arrow,
+    .react-datepicker__month-read-view--down-arrow,
+    .react-datepicker__month-year-read-view--down-arrow,
+    .react-datepicker__navigation-icon::before {
+        border-width: 2px 2px 0 0;
+        top: 11px;
+    }
+
+    .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range),
+    .react-datepicker__month-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range),
+    .react-datepicker__quarter-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range),
+    .react-datepicker__year-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range) {
+        background-color: transparent;
+        border-color: $primary_color;
+    }
+
+    .react-datepicker__day--selected:hover,
+    .react-datepicker__day--in-selecting-range:hover,
+    .react-datepicker__day--in-range:hover,
+    .react-datepicker__month-text--selected:hover,
+    .react-datepicker__month-text--in-selecting-range:hover,
+    .react-datepicker__month-text--in-range:hover,
+    .react-datepicker__quarter-text--selected:hover,
+    .react-datepicker__quarter-text--in-selecting-range:hover,
+    .react-datepicker__quarter-text--in-range:hover,
+    .react-datepicker__year-text--selected:hover,
+    .react-datepicker__year-text--in-selecting-range:hover,
+    .react-datepicker__year-text--in-range:hover,
+    .react-datepicker__day--selected,
+    .react-datepicker__day--in-selecting-range,
+    .react-datepicker__day--in-range,
+    .react-datepicker__month-text--selected,
+    .react-datepicker__month-text--in-selecting-range,
+    .react-datepicker__month-text--in-range,
+    .react-datepicker__quarter-text--selected,
+    .react-datepicker__quarter-text--in-selecting-range,
+    .react-datepicker__quarter-text--in-range,
+    .react-datepicker__year-text--selected,
+    .react-datepicker__year-text--in-selecting-range,
+    .react-datepicker__year-text--in-range {
+        background-color: $primary_color;
+    }
+
+    .react-datepicker__day:hover,
+    .react-datepicker__month-text:hover,
+    .react-datepicker__quarter-text:hover,
+    .react-datepicker__year-text:hover {
+        color: $black_color;
+    }
+}
+
+.revenue_box_content {
+    padding: 30px;
+    background-color: rgba($white_color, 0.02);
+    border-radius: 15px;
+    border: 1px solid $border_color;
+
+    .h5_title {
+        font-weight: 500;
+    }
+
+    .h4_title {
+        margin: 13px 0;
+        color: $primary_color;
+    }
+
+    p {
+        line-height: 1;
+    }
+
+    @media (max-width: 991px) {
+        margin-bottom: 30px;
+    }
+}
+
+/*==========Casino Page CSS End==========*/
+
+/*==========Player Reports Page CSS==========*/
+
+.player_reports_table {
+    header {
+        background: transparent;
+    }
+
+    .iDgIGr {
+        border: 1px solid $border_color;
+        border-radius: 8px;
+    }
+
+    .pagination_wp {
+        .pagination {
+            justify-content: end;
+            flex-wrap: wrap;
+            row-gap: 7px;
+
+            .page-item {
+                margin: 0 5px;
+                .page-link {
+                    --size: 40px;
+                    background-color: transparent;
+                    border: 1px solid $border_color;
+                    border-radius: 5px;
+                    padding: 5px 8px;
+                    min-width: var(--size);
+                    height: var(--size);
+                    background-color: rgba($body_bg, 0.2);
+                    color: $white_color;
+
+                    &:hover {
+                        background-color: $primary_color;
+                    }
+
+                    &:disabled {
+                        cursor: not-allowed;
+                    }
+                }
+
+                &.active {
+                    .page-link {
+                        background-color: $primary_color;
+                    }
+                }
+            }
+        }
+    }
+
+    .search_form {
+        display: flex;
+        gap: 12px;
+
+        .clear_btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: var(--padding);
+            height: 100%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: $red_color;
+        }
+    }
+}
+
+/*==========Player Reports Page CSS End==========*/
