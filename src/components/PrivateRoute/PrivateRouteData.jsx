@@ -2,7 +2,7 @@ import DashBoard from "../../pages/Home";
 import Invoices from "../../pages/Invoices";
 import MainDashboard from "../../pages/MainDashboard";
 import PlayerReports from "../../pages/PlayerReports";
-import CasinoSetting from "../../pages/Casino";
+// import CasinoSetting from "../../pages/Casino";
 
 export const PrivateRouteData = [
     {
@@ -24,10 +24,10 @@ export const PrivateRouteData = [
         menu_num: "04",
         components: <PlayerReports />,
         path: "/Player-reports",
-    },
-    {
-        menu_num: "04",
-        components: <CasinoSetting />,
-        path: "/casino-settings",
     }
+    // {
+    //     menu_num: "04",
+    //     components: <CasinoSetting />,
+    //     path: "/casino-settings",
+    // }
 ];
